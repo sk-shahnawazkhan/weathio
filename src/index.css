@@ -1,1 +1,12 @@
 @import "tailwindcss";
+@import "@fontsource/inter";
+
+@theme {
+  --font-inter: Inter, sans-serif;
+}
+
+@layer base {
+  html {
+    @apply font-inter text-base font-normal leading-normal tracking-normal;
+  }
+}
