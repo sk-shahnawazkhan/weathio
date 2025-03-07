@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { convertUnixToLocalTime } from "../utils/dateTime";
+import Map from "./Map";
 
 const Weather = () => {
   const [search, setSearch] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [noRecords, setNoRecords] = useState(false);
 
   useEffect(() => {
-    getWeatherDetails("Amroha");
+    getWeatherDetails("Moradabad");
   }, []);
 
   const APP_ID = import.meta.env.VITE_APP_ID;
@@ -19,10 +21,15 @@ const Weather = () => {
         `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APP_ID}&units=metric`
       );
       const data = await response.json();
-      setWeatherData(data);
-      setSearch("");
-      setIsButtonDisabled(true);
-      setHasError(false);
+      if (data.cod === 200) {
+        setWeatherData(data);
+        setSearch("");
+        setIsButtonDisabled(true);
+        setHasError(false);
+        setNoRecords(false);
+      } else {
+        setNoRecords(true);
+      }
     } catch (error) {
       console.log(error);
       setHasError(true);
@@ -65,15 +72,18 @@ const Weather = () => {
         </div>
       </section>
       <section className="px-10 lg:px-20 min-xl:px-40 py-5 weather-report">
-        <div className="grid grid-cols-2 gap-5">
-          <div className="border-1 border-slate-400">
-            {weatherData && (
-              <>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          {weatherData && !noRecords && !hasError && (
+            <>
+              <div className="shadow-lg">
                 <div className="p-5 bg-gradient-to-l from-sky-300 via-indigo-200 to-blue-200">
                   {weatherData.name && (
-                    <h2 className="text-xl text-slate-600 font-semibold">
-                      {weatherData?.name}, {weatherData?.sys?.country} |{" "}
-                      <span className="text-lg text-slate-500">
+                    <h2 className="text-xl text-slate-500 font-semibold">
+                      {weatherData?.name === "Morādābād"
+                        ? "Moradabad"
+                        : weatherData?.name}
+                      , {weatherData?.sys?.country} |{" "}
+                      <span className="text-base">
                         {convertUnixToLocalTime(
                           weatherData.dt,
                           weatherData.timezone
@@ -163,19 +173,31 @@ const Weather = () => {
                     </div>
                   </div>
                 </div>
-              </>
-            )}
-            {hasError && (
-              <div className="mt-5">
-                <p className="text-center text-red-500">
-                  ❌ Something went wrong. Please try again later.
-                </p>
               </div>
-            )}
-          </div>
-
-          {/* Map will be here... */}
+              <div className="p-2 block border-1 border-slate-400 ">
+                <Map
+                  lat={weatherData?.coord?.lat}
+                  long={weatherData?.coord?.lon}
+                  name={weatherData?.name}
+                />
+              </div>
+            </>
+          )}
         </div>
+        {hasError && (
+          <div className="mt-5">
+            <p className="text-center text-red-500">
+              ❌ Something went wrong. Please try again later.
+            </p>
+          </div>
+        )}
+        {noRecords && (
+          <div className="mt-5">
+            <p className="text-center text-red-500">
+              City not found! Try another or enter valid city/place name.
+            </p>
+          </div>
+        )}
       </section>
     </main>
   );
