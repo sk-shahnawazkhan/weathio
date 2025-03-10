@@ -2,21 +2,23 @@ import React, { useEffect, useState } from "react";
 import Map from "./Map";
 import Search from "./Search";
 import CurrentWeather from "./CurrentWeather";
+import WeatherForecast from "./WeatherForecast";
 
 const Weather = () => {
   const [search, setSearch] = useState("");
   const [weatherData, setWeatherData] = useState(null);
+  const [weatherForecastData, setWeatherForecastData] = useState(null);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [noRecords, setNoRecords] = useState(false);
 
   useEffect(() => {
-    getWeatherDetails("Moradabad");
+    fetchWeatherDetails("Moradabad");
   }, []);
 
   const APP_ID = import.meta.env.VITE_APP_ID;
 
-  const getWeatherDetails = async (location) => {
+  const fetchWeatherDetails = async (location) => {
     try {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APP_ID}&units=metric`
@@ -24,6 +26,7 @@ const Weather = () => {
       const data = await response.json();
       if (data.cod === 200) {
         setWeatherData(data);
+        fetchWeatherForecast(data.coord.lat, data.coord.lon);
         setSearch("");
         setIsButtonDisabled(true);
         setHasError(false);
@@ -37,13 +40,27 @@ const Weather = () => {
     }
   };
 
+  const fetchWeatherForecast = async (lat, long) => {
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${APP_ID}&units=metric`
+      );
+      const data = await response.json();
+      if (data.cod === "200") {
+        setWeatherForecastData(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleChange = (event) => {
     setSearch(event.target.value);
     setIsButtonDisabled(event.target.value.length === 0);
   };
 
   const handleSearch = async () => {
-    getWeatherDetails(search);
+    fetchWeatherDetails(search);
   };
 
   return (
@@ -84,6 +101,9 @@ const Weather = () => {
           </div>
         )}
       </section>
+      {weatherForecastData && (
+        <WeatherForecast weatherForecastData={weatherForecastData} />
+      )}
     </main>
   );
 };
