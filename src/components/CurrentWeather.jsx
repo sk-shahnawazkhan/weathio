@@ -7,7 +7,7 @@ import {
 const CurrentWeather = ({ weatherData }) => {
   return (
     <div className="shadow-lg">
-      <div className="p-5 bg-gradient-to-l from-sky-300 via-indigo-200 to-blue-200">
+      <div className="px-5 py-3 bg-gradient-to-l from-sky-300 via-indigo-300 to-blue-200">
         {weatherData.name && (
           <>
             <h2 className="text-xl text-slate-600 font-semibold">
@@ -64,7 +64,7 @@ const CurrentWeather = ({ weatherData }) => {
           </div>
           <div className="flex items-center justify-between border-b-1 border-slate-400 pb-2">
             <p>Wind Speed</p>
-            <span>{weatherData?.wind?.speed} km/h</span>
+            <span>{Math.floor(weatherData?.wind?.speed * 3.6)} km/h</span>
           </div>
           <div className="flex items-center justify-between border-b-1 border-slate-400 pb-2">
             <p>Pressure</p>
@@ -72,7 +72,7 @@ const CurrentWeather = ({ weatherData }) => {
               {weatherData?.main?.pressure > 1013.25
                 ? `↑ ${weatherData?.main?.pressure}`
                 : `↓ ${weatherData?.main?.pressure}`}{" "}
-              hPa
+              mb
             </span>
           </div>
           <div className="flex items-center justify-between border-b-1 border-slate-400 pb-2">

@@ -76,7 +76,7 @@ const Weather = () => {
           {weatherData && !noRecords && !hasError && (
             <>
               <CurrentWeather weatherData={weatherData} />
-              <div className="p-2 block border-1 border-slate-400 ">
+              <div className="block border-1 border-slate-400 ">
                 <Map
                   lat={weatherData?.coord?.lat}
                   long={weatherData?.coord?.lon}

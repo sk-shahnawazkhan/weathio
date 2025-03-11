@@ -20,7 +20,6 @@ export const convertUnixToLocalDateTime = (unixTimestamp, timezoneSeconds) => {
     day: "numeric",
     hour: "2-digit",
     minute: "2-digit",
-    // second: "2-digit",
     hour12: true,
     timeZone: getTimeZoneName(timezoneSeconds),
   })
@@ -28,6 +27,18 @@ export const convertUnixToLocalDateTime = (unixTimestamp, timezoneSeconds) => {
     .replace("am", "AM")
     .replace("pm", "PM");
 };
+
+export function convertUTCToDayTime(dateTime) {
+  const date = new Date(dateTime);
+  return date
+    .toLocaleString("en-US", {
+      weekday: "short",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    })
+    .replace(" ", ", ");
+}
 
 const getTimeZoneName = (timezoneSeconds) => {
   const timeZones = {

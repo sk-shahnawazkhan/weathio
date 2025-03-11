@@ -2,7 +2,7 @@ import React from "react";
 
 const Search = ({ search, handleChange, handleSearch, isButtonDisabled }) => {
   return (
-    <section className="px-10 lg:px-20 xl:px-40 pt-10 pb-5">
+    <section className="px-10 lg:px-20 xl:px-40 pt-15 pb-5">
       <div className="flex items-center justify-center gap-1">
         <input
           type="search"
