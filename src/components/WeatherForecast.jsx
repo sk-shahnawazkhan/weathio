@@ -83,7 +83,7 @@ const WeatherForecast = ({ weatherForecastData }) => {
                     <p className="capitalize">
                       {forecast.weather[0].description}
                     </p>
-                    <div className="grid grid-cols-3 gap-1 text-sm">
+                    <div className="flex items-center justify-between gap-1 text-sm">
                       <div className="text-left">
                         <p className="text-slate-500">Humidity</p>
                         <span>{forecast.main.humidity} %</span>

@@ -11,6 +11,7 @@ const Weather = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [noRecords, setNoRecords] = useState(false);
+  const [noWFData, setNoWFData] = useState(false);
 
   useEffect(() => {
     fetchWeatherDetails("Moradabad");
@@ -48,9 +49,12 @@ const Weather = () => {
       const data = await response.json();
       if (data.cod === "200") {
         setWeatherForecastData(data);
+      } else {
+        setNoWFData(true);
       }
     } catch (error) {
       console.log(error);
+      setHasError(true);
     }
   };
 
@@ -101,8 +105,15 @@ const Weather = () => {
           </div>
         )}
       </section>
-      {weatherForecastData && (
+      {weatherForecastData && weatherData && !noRecords && (
         <WeatherForecast weatherForecastData={weatherForecastData} />
+      )}
+      {noWFData && (
+        <div className="mt-5">
+          <p className="text-center text-red-500">
+            Weather forecast data is not available!
+          </p>
+        </div>
       )}
     </main>
   );
