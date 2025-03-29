@@ -21,7 +21,9 @@ const Weather = () => {
 
   const fetchWeatherDetails = async (location) => {
     try {
-      const response = await fetch(`/api/apihandler?location=${location}`);
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APP_ID}&units=metric`
+      );
       const data = await response.json();
       if (data.cod === 200) {
         setWeatherData(data);
