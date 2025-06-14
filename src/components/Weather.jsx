@@ -21,6 +21,7 @@ const Weather = () => {
 
   const fetchWeatherDetails = async (location) => {
     try {
+      // const response = await fetch(`/api/weather?location=${location}`);
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APP_ID}&units=metric`
       );
@@ -43,6 +44,7 @@ const Weather = () => {
 
   const fetchWeatherForecast = async (lat, long) => {
     try {
+      // const response = await fetch(`/api/forecast?lat=${lat}&lon=${long}`);
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=${APP_ID}&units=metric`
       );
