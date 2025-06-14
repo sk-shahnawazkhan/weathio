@@ -1,16 +1,3 @@
-// export default async function apiHandler(req, res) {
-//   const location = req.query.location || "Moradabad";
-//   const APP_ID = process.env.APP_ID;
-//   console.log("Location is ", location);
-
-//   const response = await fetch(
-//     `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APP_ID}&units=metric`
-//   );
-//   const data = await response.json();
-
-//   res.status(200).json(data);
-// }
-
 export default async function handler(req, res) {
   const location = req.query.location;
   const APP_ID = process.env.APP_ID;
