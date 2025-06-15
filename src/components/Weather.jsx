@@ -17,15 +17,15 @@ const Weather = () => {
     fetchWeatherDetails("Moradabad");
   }, []);
 
-  const API_KEY = import.meta.env.VITE_API_KEY;
+  // const API_KEY = import.meta.env.VITE_API_KEY;
 
   const fetchWeatherDetails = async (city) => {
     try {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
-      );
+      // const response = await fetch(
+      //   `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+      // );
 
-      // const response = await fetch(`/api/current?city=${city}`);
+      const response = await fetch(`/api/current?city=${city}`);
       const data = await response.json();
       if (data.cod === 200) {
         setWeatherData(data);
@@ -45,11 +45,11 @@ const Weather = () => {
 
   const fetchWeatherForecast = async (lat, lon) => {
     try {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
-      );
+      // const response = await fetch(
+      //   `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+      // );
 
-      // const response = await fetch(`/api/forecast?lat=${lat}&lon=${lon}`);
+      const response = await fetch(`/api/forecast?lat=${lat}&lon=${lon}`);
       const data = await response.json();
       if (data.cod === "200") {
         setWeatherForecastData(data);
