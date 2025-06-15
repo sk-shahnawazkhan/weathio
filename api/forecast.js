@@ -1,18 +1,18 @@
 export default async function handler(req, res) {
   const { lat, lon } = req.query;
-  const APP_ID = process.env.APP_ID;
+  const API_KEY = process.env.API_KEY;
 
-  if (!APP_ID) {
-    return res.status(500).json({ error: "APP_ID not set" });
+  if (!API_KEY) {
+    return res.status(500).json({ error: "API key is not available!" });
   }
 
   if (!lat || !lon) {
-    return res.status(400).json({ error: "Missing lat or lon in query" });
+    return res.status(400).json({ error: "lat or lon is missing" });
   }
 
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APP_ID}&units=metric`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
     );
 
     const data = await response.json();

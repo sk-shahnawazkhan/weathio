@@ -5,8 +5,8 @@ import "leaflet/dist/leaflet.css";
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import markerShadowPng from "leaflet/dist/images/marker-shadow.png";
 
-const Map = ({ lat, long, name }) => {
-  const position = [lat, long];
+const Map = ({ lat, lon, name }) => {
+  const position = [lat, lon];
   const markerIcon = L.icon({
     iconUrl: "/marker-icon.png",
     shadowUrl: "marker-shadow.png",
@@ -15,7 +15,7 @@ const Map = ({ lat, long, name }) => {
   return (
     <MapContainer
       center={position}
-      key={lat + long}
+      key={lat + lon}
       zoom={10}
       style={{ height: "100%", width: "100%", minHeight: "300px" }}
     >
