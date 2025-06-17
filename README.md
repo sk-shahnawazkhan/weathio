@@ -39,8 +39,8 @@ You can check out the live version here: [Weathio](https://weathio.vercel.app/)
 | -------------- | ------------------------------------ |
 | React.js       | Frontend UI and component logic      |
 | JavaScript     | Application logic and API handling   |
-| HTLM           | Utility-first responsive styling     |
-| Tailwind CSS   | Semantic structure and layout        |
+| HTML           | Semantic structure and layout        |
+| Tailwind CSS   | Utility-first responsive styling     |
 | shadcn/ui      | Pre-built styled components          |
 | OpenWeatherMap | Weather and forecast API             |
 | Leaflet.js     | Map support for geolocation features |
@@ -51,26 +51,23 @@ You can check out the live version here: [Weathio](https://weathio.vercel.app/)
 
 ### 1. Clone the Repository
 
-git clone https://github.com/sk-shahnawazkhan/weathio.git
+git clone `https://github.com/sk-shahnawazkhan/weathio.git`  
 cd weathio
 
 ### 2. Install Dependencies
 
-✓ npm install
+✓ npm install  
 ✓ npm install tailwindcss @tailwindcss/vite  
-✓ npm install @fontsource/inter
-✓ npm install react-leaflet@next
+✓ npm install @fontsource/inter  
+✓ npm install react-leaflet@next  
 ✓ npx shadcn@latest init
-💡**Note:** You need to install dependencies before runing the app.
 
-> In case of any issues, refer to the official documentation.
-
-> 💡**Note:** In case of any issue(s), check the official documentation
+> 💡**Note:** You need to install dependencies before runing the app.  
 > In case of any issues, refer to the official documentation.
 
 ### 3. Add Your API Key
 
-Create a .env/.env.local file in the root directory and add your OpenWeatherMap API key. Don't forget to add it to .gitignore file.
+Create a .env/.env.local file in the root directory and add your OpenWeatherMap API key. Don't forget to add it to .gitignore file.  
 VITE_API_KEY=your_api_key(Local/Development environment)  
 API_KEY=your_api_key(Add it to Vercel/Netlify environment variables)
 
@@ -80,18 +77,21 @@ Use `npm run dev` to start the application.
 
 ---
 
-📸 Screenshots
+## 📸 Screenshots
+
 ![Current weather onLoad](./src/assets/images/current-onload.png)  
 ![Current weather after search](./src/assets/images/current-onsearch.png)  
 ![Forecast day 1](./src/assets/images/forecast-day1.png)  
 ![Forecast day 2](./src/assets/images/forecast-day2.png)  
-![Forecast day 3](./src/assets/images/forecast-day3.png)
+![Forecast day 3](./src/assets/images/forecast-day3.png)  
+![Forecast day 4](./src/assets/images/forecast-day4.png)  
+![Forecast day 5](./src/assets/images/forecast-day5.png)
 
 ---
 
-🧠 Project Highlights
+## 🧠 Project Highlights
 
-- Used React.js for building real-world applications
+- Used React.js for building real-world application
 
 - Efficient use of API integration with loading and error states
 
@@ -103,7 +103,7 @@ Use `npm run dev` to start the application.
 
 ---
 
-📦 Future Enhancements
+## 📦 Future Enhancements
 
 - 🗺️ Display weather based on current user location
 
