@@ -35,15 +35,19 @@ You can check out the live version here: [Weathio](https://weathio.vercel.app/)
 
 ## 🔧 Tech Stack
 
-| Technology     | Purpose                              |
-| -------------- | ------------------------------------ |
-| React.js       | Frontend UI and component logic      |
-| JavaScript     | Application logic and API handling   |
-| HTML           | Semantic structure and layout        |
-| Tailwind CSS   | Utility-first responsive styling     |
-| shadcn/ui      | Pre-built styled components          |
-| OpenWeatherMap | Weather and forecast API             |
-| Leaflet.js     | Map support for geolocation features |
+| Technology           | Purpose                                         |
+| -------------------- | ----------------------------------------------- |
+| React.js             | Frontend UI and component logic                 |
+| JavaScript           | Application logic and API handling              |
+| Vite                 | Lightning-fast bundler and dev server           |
+| HTML                 | Semantic structure and layout                   |
+| Tailwind CSS         | Utility-first responsive styling                |
+| shadcn/ui            | Pre-built styled UI components                  |
+| OpenWeatherMap API   | Weather and forecast data                       |
+| Leaflet.js           | Map support for geolocation features            |
+| Serverless Functions | API key proxying and secure backend integration |
+| Git & GitHub         | Version control and code collaboration          |
+| Vercel               | Deployment and hosting                          |
 
 ---
 
@@ -100,6 +104,8 @@ Use `npm run dev` to start the application.
 - Implementing modern UI/UX design practices
 
 - Writing modular, maintainable, and readable frontend code
+
+- API proxy integration for securing API keys
 
 ---
 
